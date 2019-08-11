@@ -21,7 +21,7 @@ class Users(db.Model, UserMixin): #No FK in table, declare FK in venue, UserEven
     #FK
     #Venue = db.relationhsips('Venue', db.ForeignKey('user.id'), lazy=True, backref='AdminCreator')
     #For referencing Creator purpose
-    UserEvent = db.relationship('UserEvent', secondary=UserEvent, lazy='subquery', backref=db.backref('users', lazy=True)) #for user event table
+    UserEvent = db.relationship('User_Event', secondary=UserEvent, lazy='subquery', backref=db.backref('users', lazy=True)) #for user event table
     #Event = db.relationship('Event', lazy='subquery', backref='users') #for Event participation table
     #For Creator purposes
     def __repr__(self):
@@ -39,7 +39,7 @@ class Venues(db.Model): #FK from User, Declare FK for Events
     def __repr__(self):
         return f"Venues('{self.venue}', '{self.event_capacity}')"
 
-UserEvent = db.Table('UserEvent',db.Column(db.Integer, db.ForeignKey('venue.id'), primary_key=True),
+UserEvent = db.Table('UserEvent',db.Column(db.Integer, db.ForeignKey('fkvenue.id'), primary_key=True),
                                  dbColumn(db.Integer, db.ForeignKey('event.id'), primary_key=True))
 
 #columns are gg                                 
@@ -55,9 +55,9 @@ class Events(db.Model): #2 FK declare for User-Event and Event and Creator?
     #fk
     venue_id = db.Column(db.Integer, db.ForeignKey('venue.id'), nullable=False)
     tag_id = db.Column(db.Integer, db.ForeignKey('tag.id'), nullable=False)
-    #user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    sport_id = db.Column(db.Integer, db.ForeignKey('sport.id'), nullable=False)
     #For Creator function if we want to implement later
-    event_tag = db.relationship('Event', backref='tag', lazy=True)
+    User_Event = db.relationship('User_Event', secondary=UserEvent, lazy='subquery', backref=db.backref('event', lazy=True))
     def __repr__(self):
         return f"Events('{self.event_name}', '{self.event_description}', '{self.user_capacity}', '{self.time_start}', '{self.time_end}', '{self.tag}')"
 
@@ -65,26 +65,11 @@ class Events(db.Model): #2 FK declare for User-Event and Event and Creator?
 class Sports(db.Model): #Declare FK for Events are we 
     id = db.Column(db.Integer, primary_key=True)
     sport_name = db.Column(db.String(50), nullable=False)
-
     event_sport = db.relationship('Events', backref='sport_name', lazy=True)
 
     def __repr__(self):
         return f"Sports('{self.sport_name}',)"
 #Tag columns are gg
-class Tags(db.Model): #
-    id = db.Column(db.Integer, primary_key=True)
-    tag_name = db.Column(db.String(50), nullable=False)
-    event_tag = db.relationship('Event', backref='tag', lazy=True)
-    def __repr__(self):
-        return f"Tags('{self.tag_name}')"
-
-class Tags(db.Model): #
-    id = db.Column(db.Integer, primary_key=True)
-    tag_name = db.Column(db.String(50), nullable=False)
-    event_tag = db.relationship('Event', backref='tag', lazy=True)
-    def __repr__(self):
-        return f"Tags('{self.tag_name}')"
-
 class Tags(db.Model): #
     id = db.Column(db.Integer, primary_key=True)
     tag_name = db.Column(db.String(50), nullable=False)
