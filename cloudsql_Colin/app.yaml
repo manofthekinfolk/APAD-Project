@@ -1,0 +1,12 @@
+# [START gae_python37_cloudsql_config]
+# No need for handler as long as there is single handler in main.py
+# Library Supported
+runtime: python37
+
+env_variables:
+  CLOUD_SQL_USERNAME: root
+  CLOUD_SQL_PASSWORD: password
+  CLOUD_SQL_DATABASE_NAME: pickupsport
+  CLOUD_SQL_CONNECTION_NAME: cloudsql-pickupsport:us-central1:sql-pickup-sport
+
+# [END gae_python37_cloudsql_config]
