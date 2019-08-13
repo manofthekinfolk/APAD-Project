@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{%block link%}
+
+            <a class="nav-item nav-link" href="{{ url_for('addvenue') }}">Add Venue</a>
+          <a class="nav-item nav-link" href="{{ url_for('deletevenue') }}">Delete Venue</a>
+          <a class="nav-item nav-link" href="{{ url_for('deleteevent') }}">Delete Event</a>
+          <a class="nav-item nav-link" href="{{ url_for('deleteuser') }}">Delete User</a>
+
+{%endblock link%}
+{% block content %}
+<div class="content-section">
+  <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Delete User</legend>
+           <div class="form-group">
+               {{ form.userid.label(class="form-control-label") }}
+               {% if form.userid.errors %}
+                   {{ form.userid(class="form-control form-control-lg is-invalid") }}
+                   <div class="invalid-feedback">
+                       {% for error in form.userid.errors %}
+                           <span>{{ error }}</span>
+                       {% endfor %}
+                   </div>
+               {% else %}
+                   {{ form.userid(class="form-control form-control-lg") }}
+               {% endif %}
+              </div>
+          </fieldset>
+          <div class="form-group">
+              {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+      </form>
+  </div>
+  <div class="border-top pt-3">
+      <small class="text-muted">
+          <a class="ml-2" href="{{ url_for('home') }}">Back</a>
+      </small>
+  </div>
+{% endblock content %}
