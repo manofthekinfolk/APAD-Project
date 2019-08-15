@@ -18,12 +18,25 @@
                         {{ form.venue(class="form-control form-control-lg") }}
                     {% endif %}
                 </div><table border = 1>
+                        <tr>
+                            <th>Event ID</th>
+                            <th>Sport</th>
+                            <th>Description</th>
+                            <th>Capacity</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Venue</th>
+                        </tr>
                         {% for user in userinfo %}
                         <tr>
                           <td> {{user[0]}} </td>
-                          <td> {{user[1]}} </td>
                           <td> {{user[2]}} </td>
                           <td> {{user[3]}} </td>
+                          <td> {{user[4]}} </td>
+                          <td> {{user[5]}} </td>
+                          <td> {{user[6]}} </td>
+                          <td> {{user[10]}} </td>
+
                         </tr>
                         {% endfor %}
                     </table>

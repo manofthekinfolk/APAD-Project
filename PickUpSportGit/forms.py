@@ -49,11 +49,11 @@ class DeleteeventsForm(FlaskForm):
     submit = SubmitField('Delete')
 
 class DeleteuserForm(FlaskForm):
-    userid = StringField('What is User ID?',validators=[DataRequired()])
+    userid = StringField("What is User's Email?",validators=[DataRequired()])
     submit = SubmitField('Delete')
 
 class DeletevenueForm(FlaskForm):
-    venueid = StringField('What is Venue ID?',validators=[DataRequired()])
+    venueid = StringField('What is Venue Name?',validators=[DataRequired()])
     submit = SubmitField('Delete')
 
 class AddvenueForm(FlaskForm):

@@ -136,7 +136,6 @@ def login():
                 else:
                     return redirect(url_for('home'))
                 #call another html page
-        con.close()
     return render_template('login.html', title='Login', form=form)
 
 
@@ -156,7 +155,6 @@ def adduser():
             sa=form.streetaddress.data
             ct=form.city.data
             cur.execute('insert into Users(FirstName, LastName, Email, Password, StreetAddress, City, Admin) values ("%s","%s","%s","%s","%s","%s",0)'%(fn,ln,em,pw,sa,ct))
-        con.close()
         flash(f'Account created for {form.firstname.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('adduser.html', title='Add User', form=form)
@@ -168,8 +166,7 @@ def deleteuser():
         with con:
             cur =con.cursor()
             userid = form.userid.data
-            cur.execute("delete from Users where PKUserID = %s"%(userid))            
-            
+            cur.execute("delete from Users where Email = '%s'"%(userid))    
         flash(f'User Deleted', 'success')
         return redirect(url_for('deleteuser'))
     return render_template('deleteuser.html', title='Delete User', form=form)
@@ -196,7 +193,8 @@ def deletevenue():
         with con:
             cur =con.cursor()
             id = form.venueid.data
-            cur.execute("delete from Venues where PKVenueID=('%s')"%(id))        
+            #cur.execute("delete from Venues where PKVenueID=('%s')"%(id)) 
+            cur.execute("delete from Venues where Venue=('%s')"%(id))         
         flash(f'Venue Deleted', 'success')
         return redirect(url_for('deleteuser'))
     return render_template('deletevenue.html', title='Delete Venue', form=form)
@@ -234,11 +232,9 @@ def eventhejoin():
             cur =con.cursor()
             id = form.id.data
             result = cur.execute("select FieldName, EventDescription, TimeStart, TimeEnd from(events join UsersEvent on UsersEvent.FKEventID=events.PKEventID ) where FKUserID = %s;"%(id))
-            #result = cur.execute("select * from UsersEvent")
             if result >0:
                 userinfo = cur.fetchall()   
                 return render_template('eventhejoin.html', userinfo = userinfo, form=form)
-
     return render_template('eventhejoin.html',title='What Event I Join', form=form)
 
 
@@ -255,9 +251,6 @@ def searchevent():
             if result >0:
                 userinfo = cur.fetchall()
                 return render_template('searchevent.html', userinfo = userinfo, form=form) 
-            
-            
-    con.close()
     return render_template('searchevent.html',title='What Event in this Venue?', form=form)
 
 

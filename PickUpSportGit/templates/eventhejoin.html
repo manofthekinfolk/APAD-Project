@@ -18,6 +18,12 @@
                         {{ form.id(class="form-control form-control-lg") }}
                     {% endif %}
                 </div><table border = 1>
+                        <tr>
+                                <th>Sport Name</th>
+                                <th>Description</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                        </tr>
                         {% for user in userinfo %}
                         <tr>
                           <td> {{user[0]}} </td>
