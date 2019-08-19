@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PickUp Sport</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="button_next">Next</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="error_password">Password must contain at least 8 characters.</string>
+    <string name="error_invalid">Username or password is incorrect</string>
+    <string name="error_empty">Please enter a username and password</string>
+</resources>

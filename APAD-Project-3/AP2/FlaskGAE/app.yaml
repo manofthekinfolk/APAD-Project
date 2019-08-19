@@ -1,0 +1,9 @@
+# [START gae_python37_cloudsql_config]
+runtime: python37
+# Edit the variables below to fit your GAE project's SQL credentials 
+env_variables:
+  CLOUD_SQL_USERNAME: root
+  CLOUD_SQL_PASSWORD: apad19Stuff
+  CLOUD_SQL_DATABASE_NAME: guestbook
+  CLOUD_SQL_CONNECTION_NAME: apad19:us-central1:apad19
+# [END gae_python37_cloudsql_config]

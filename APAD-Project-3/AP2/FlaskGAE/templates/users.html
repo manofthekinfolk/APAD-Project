@@ -1,0 +1,17 @@
+<!doctype html>
+<title> User Listing</title>
+<table>
+  <tr>
+  {% for col in desc %}
+     <th>{{col[0]}}</th>
+  {% endfor %}
+  </tr>
+  {% for item in users %}
+  <tr>
+   <td width="0%">&nbsp;</td>
+   <td>{{item["candidate"]}}</td>
+   <td>{{item["email"]}}</td>
+   <td width="0%">&nbsp;</td>
+  </tr>
+{% endfor %}
+</table>
