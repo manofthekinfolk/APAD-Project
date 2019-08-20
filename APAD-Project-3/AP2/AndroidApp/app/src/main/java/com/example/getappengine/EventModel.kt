@@ -1,47 +1,87 @@
 package com.example.getappengine
 
 
-class Event_Model {
 
-    var sportname: String? = null
+import java.util.*
+
+class Event_Model {
+    var eventid: Int? = null
+    var eventname: String? = null
+    var hostname: String? = null
     var description: String? = null
     var starttime: String? = null
     var endtime: String? = null
+    var capacity: String? = null
+    var venue_id: Int? = null
 
-
-    fun getsportname(): String {
-        return sportname.toString()
+    fun geteventids(): String {
+        return eventid.toString()
+    }
+    fun seteventids(name: Int) {
+        this.eventid = name
+    }
+    fun getEventNames(): String {
+        return eventname.toString()
     }
 
-    fun setsportname(sportname: String) {
-        this.sportname = sportname
+    fun setEventNames(name: String) {
+        this.eventname = name
     }
 
+    fun getHostNames(): String {
+        return hostname.toString()
+    }
 
+    fun setHostNames(name: String) {
+        this.hostname = name
+    }
     fun getDescriptions(): String {
         return description.toString()
     }
 
-    fun setDescriptions(description: String) {
-        this.description = description
+    fun setDescriptions(name: String) {
+        this.description = name
+    }
+    fun getDates(): String {
+        return day.toString()
     }
 
-
-    fun getstarttime(): String {
-        return starttime.toString()
+    fun setDates(name: String) {
+        this.day = name
+    }
+    fun getTimeslots(): String {
+        return timeslot.toString()
     }
 
-    fun setstarttime(starttime: String) {
-        this.starttime = starttime
+    fun setTimeslots(name: String) {
+        this.timeslot = name
+    }
+    fun getCurrentUsers(): String {
+        return currentusers.toString()
     }
 
-    fun getendtime(): String {
-        return endtime.toString()
+    fun setCurrentUsers(name: String) {
+        this.currentusers = name
+    }
+    fun getMaxUsers(): String {
+        return maxusers.toString()
     }
 
-    fun setendtime(endtime: String) {
-        this.endtime = endtime
+    fun setMaxUsers(name: String) {
+        this.maxusers = name
+    }
+    fun getPrices(): String {
+        return price.toString()
     }
 
+    fun setPrices(name: String) {
+        this.price = name
+    }
+    fun getVenueIDs(): String {
+        return venue_id.toString()
+    }
 
+    fun setVenueIDs(name: Int) {
+        this.venue_id = name
+    }
 }
