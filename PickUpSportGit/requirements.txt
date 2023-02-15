@@ -2,5 +2,5 @@ flask==1.0.2
 PyMySQL==0.9.3
 Flask-WTF==0.14.2
 google-cloud-storage==1.13.0
-werkzeug==0.15.5
+werkzeug==2.2.3
 GoogleAppEngineCloudStorageClient==1.9.22.1
